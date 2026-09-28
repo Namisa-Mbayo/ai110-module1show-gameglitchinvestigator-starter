@@ -5,18 +5,21 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 ## 1. What was broken when you started?
 
 - What did the game look like the first time you ran it?
-- List at least two concrete bugs you noticed at the start  
-  (for example: "the hints were backwards").
+The first time I played the game I decided to go in blind, analyzing only what was on the screen. When I began to input my guesses, I followed the hints as instructed and noticed something was wrong when I guessed '0' and the hint was still telling me to go lower. I tried guessing a higher number but I ran out of turns.
 
+- List at least two concrete bugs you noticed at the start.
+I noticed that incorrect hints were given for each guess. When the guess is too high the hint is to guess a higher number, and if my guess is too low the hint is to guess a lower number. I also noticed that the when you click the 'New Game' button, instead of starting a new game it displays the message 'Start a new game to play again.'
+
+<!-- markdownlint-disable-next-line MD036 -->
 **Bug Reproduction Log**
 
 Document at least 3 bugs you found. Add rows as needed.
 
-| Input | Expected Behavior | Actual Behavior | Console Output / Error |
-|-------|-------------------|-----------------|------------------------|
-| | | | |
-| | | | |
-| | | | |
+Input | Expected Behavior | Actual Behavior | Console Output / Error | Suspected Code Location
+-------- | -------- | -------- | -------- | --------
+ Guess of 50 when secret is 11 | "Go LOWER" hint shown | "Go Higher" hint shown | "📈 Go HIGHER!" | `app.py`, `def check_guess()`
+ Correct guess in 5 attempts | Final score of 20 shown | Final score of 30 shown | "Final score: 30" | `app.py`, `def update_score()`
+ 'New Game' button toggled | New game started | Current game still displayed | "You already won. Start a new game to play again." | `app.py`, `if new_game:`
 
 ---
 
