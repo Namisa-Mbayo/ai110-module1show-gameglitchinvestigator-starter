@@ -32,6 +32,7 @@ def parse_guess(raw: str):
     return True, value, None
 
 
+# FIX: hint direction was inverted, messages were switched to match outcome
 def check_guess(guess, secret):
     """
     Compare guess to secret and return (outcome, message).
@@ -51,7 +52,7 @@ def check_guess(guess, secret):
 
     return "Too Low", "📈 Go HIGHER!"
 
-
+# FIX: a "Too High" guess on an even attempt awarded 5 points, now takes away 5 points instead
 def update_score(current_score: int, outcome: str, attempt_number: int):
     """Update score based on outcome and attempt number."""
     if outcome == "Win":
@@ -61,8 +62,6 @@ def update_score(current_score: int, outcome: str, attempt_number: int):
         return current_score + points
 
     if outcome == "Too High":
-        if attempt_number % 2 == 0:
-            return current_score + 5
         return current_score - 5
 
     if outcome == "Too Low":
